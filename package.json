@@ -4,7 +4,6 @@
   "description": "synthesizing ideas.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
   },
   "repository": {
     "type": "git",
