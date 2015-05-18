@@ -22,7 +22,7 @@ gulp.task('scss', function () {
     .pipe(gulp.dest('./app/static'));
 });
 
-gulp.task('run', function () {
+gulp.task('run', ['bower', 'copy-bower-components', 'scss'], function () {
   return run("node_modules/.bin/electron app/").exec();
 });
 
