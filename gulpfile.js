@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var run = require('gulp-run');
+'use strict';
+
 let sass = require('gulp-sass');
 
 gulp.task('scss', function () {
