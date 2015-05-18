@@ -94,3 +94,6 @@ tramp
 Session.vim
 .netrwhist
 *~
+
+### This Project ###
+app/
