@@ -11,7 +11,7 @@ gulp.task('scss', function () {
 });
 
 gulp.task('run', function () {
-  return run("node_modules/.bin/electron .").exec();
-})
+  return run("node_modules/.bin/electron app/").exec();
+});
 
 gulp.task('default', ['run']);
