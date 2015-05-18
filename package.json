@@ -18,5 +18,8 @@
   ],
   "author": "Liam Marshall (liam@cpan.org)",
   "license": "GPL-3.0",
-  "homepage": "https://bitbucket.org/proteins/chymist#readme"
+  "homepage": "https://bitbucket.org/proteins/chymist#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^0.26.0"
+  }
 }
