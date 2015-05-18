@@ -14,6 +14,8 @@ gulp.task('octicons', ['bower'], function () {
     .pipe(gulp.dest('./app/static'));
 });
 
+gulp.task('copy-bower-components', ['octicons']);
+
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
