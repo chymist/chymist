@@ -9,6 +9,10 @@ gulp.task('bower', function () {
     .pipe(gulp.dest('./bower_components'))
 });
 
+gulp.task('octicons', ['bower'], function () {
+  return gulp.src('./bower_components/octicons/octicons/*.{css,woff}')
+    .pipe(gulp.dest('./app/static'));
+});
 
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
