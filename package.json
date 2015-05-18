@@ -1,0 +1,22 @@
+{
+  "name": "chymist",
+  "version": "1.0.0",
+  "description": "synthesizing ideas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/proteins/chymist.git"
+  },
+  "keywords": [
+    "biology",
+    "cytoscape",
+    "brain-map",
+    "graph"
+  ],
+  "author": "Liam Marshall (liam@cpan.org)",
+  "license": "GPL-3.0",
+  "homepage": "https://bitbucket.org/proteins/chymist#readme"
+}
