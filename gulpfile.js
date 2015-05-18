@@ -17,7 +17,7 @@ gulp.task('octicons', ['bower'], function () {
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./app/css'));
+    .pipe(gulp.dest('./app/static'));
 });
 
 gulp.task('run', function () {
