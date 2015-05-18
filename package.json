@@ -19,6 +19,9 @@
   "homepage": "https://bitbucket.org/proteins/chymist#readme",
   "devDependencies": {
     "electron-prebuilt": "^0.26.0",
-    "gulp-run": "^1.6.8"
+    "gulp": "^3.8.11",
+    "gulp-bower": "0.0.10",
+    "gulp-run": "^1.6.8",
+    "gulp-sass": "^2.0.1"
   }
 }
