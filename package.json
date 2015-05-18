@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "synthesizing ideas.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/proteins/chymist.git"
@@ -19,6 +18,7 @@
   "license": "GPL-3.0",
   "homepage": "https://bitbucket.org/proteins/chymist#readme",
   "devDependencies": {
-    "electron-prebuilt": "^0.26.0"
+    "electron-prebuilt": "^0.26.0",
+    "gulp-run": "^1.6.8"
   }
 }
