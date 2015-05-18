@@ -2,6 +2,8 @@
 let gulp = require('gulp');
 let run = require('gulp-run');
 let sass = require('gulp-sass');
+let bower = require('gulp-bower');
+
 
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
