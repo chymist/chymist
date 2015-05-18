@@ -1,5 +1,4 @@
 'use strict';
-
 let gulp = require('gulp');
 let run = require('gulp-run');
 let sass = require('gulp-sass');
