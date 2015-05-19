@@ -16,14 +16,29 @@ gulp.task('octicons', ['bower'], function () {
 
 gulp.task('copy-bower-components', ['octicons']);
 
+gulp.task('markup', function () {
+  return gulp.src('./markup/**/*.html')
+    .pipe(gulp.dest('./app/static'))
+});
+
+gulp.task('js', function () {
+  return gulp.src('./js/**/*.js')
+    .pipe(gulp.dest('./app/'));
+});
+
+gulp.task('static', function () {
+  return gulp.src('./static/**/*')
+    .pipe(gulp.dest('./app/static'));
+})
+
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./app/static'));
 });
 
-gulp.task('run', ['bower', 'copy-bower-components', 'scss'], function () {
-  return run("node_modules/.bin/electron app/").exec();
+gulp.task('run', ['bower', 'copy-bower-components', 'js', 'markup', 'scss'], function () {
+  return run("node_modules/.bin/electron app/main.js").exec();
 });
 
 gulp.task('default', ['run']);
