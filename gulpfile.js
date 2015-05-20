@@ -1,5 +1,6 @@
 'use strict';
 let gulp = require('gulp');
+let gutil = require('gulp-util');
 let run = require('gulp-run');
 let sass = require('gulp-sass');
 let bower = require('gulp-bower');
@@ -21,7 +22,8 @@ gulp.task('coffee', function () {
   return gulp.src([
     './src/**/*.coffee',
     './static/**/*.coffee'
-    ]).coffee()
+    ])
+    .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest('./app/'));
 });
 
