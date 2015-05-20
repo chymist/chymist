@@ -25,6 +25,7 @@
     "gulp-sass": "^2.0.1"
   },
   "dependencies": {
+    "coffee-script": "^1.9.2",
     "cytoscape": "^2.4.0"
   }
 }
