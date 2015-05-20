@@ -52,3 +52,5 @@ parseCommandLine = ->
   devMode = args['dev']
 
   {devMode} # return the options in an easy-to-use hash
+
+start() # call the start function
