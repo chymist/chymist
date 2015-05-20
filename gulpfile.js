@@ -19,7 +19,7 @@ gulp.task('copy-bower-components', ['octicons']);
 
 gulp.task('coffee', function () {
   return gulp.src([
-    './coffee/**/*.coffee',
+    './src/**/*.coffee',
     './static/**/*.coffee'
     ]).coffee()
     .pipe(gulp.dest('./app/'));
