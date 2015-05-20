@@ -38,8 +38,10 @@ gulp.task('scss', function () {
     .pipe(gulp.dest('./app/static'));
 });
 
-gulp.task('run', ['bower', 'copy-bower-components', 'coffee', 'static', 'scss'], function () {
+gulp.task('build', ['bower', 'copy-bower-components', 'coffee', 'static', 'scss']);
+
+gulp.task('run', ['build'], function () {
   return run("node_modules/.bin/electron app/main.js").exec();
-});
+})
 
 gulp.task('default', ['run']);
