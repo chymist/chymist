@@ -16,10 +16,6 @@ gulp.task('octicons', ['bower'], function () {
 
 gulp.task('copy-bower-components', ['octicons']);
 
-gulp.task('markup', function () {
-  return gulp.src('./markup/**/*.html')
-    .pipe(gulp.dest('./app/static'))
-});
 
 gulp.task('js', function () {
   return gulp.src('./js/**/*.js')
