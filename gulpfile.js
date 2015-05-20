@@ -3,6 +3,7 @@ let gulp = require('gulp');
 let run = require('gulp-run');
 let sass = require('gulp-sass');
 let bower = require('gulp-bower');
+let coffee = require('gulp-coffee');
 
 gulp.task('bower', function () {
   return bower()
@@ -16,9 +17,8 @@ gulp.task('octicons', ['bower'], function () {
 
 gulp.task('copy-bower-components', ['octicons']);
 
-
-gulp.task('js', function () {
-  return gulp.src('./js/**/*.js')
+gulp.task('coffee', function () {
+  return gulp.src('./coffee/**/*.coffee')
     .pipe(gulp.dest('./app/'));
 });
 
@@ -33,7 +33,7 @@ gulp.task('scss', function () {
     .pipe(gulp.dest('./app/static'));
 });
 
-gulp.task('run', ['bower', 'copy-bower-components', 'js', 'markup', 'scss'], function () {
+gulp.task('run', ['bower', 'copy-bower-components', 'coffee', 'static', 'scss'], function () {
   return run("node_modules/.bin/electron app/main.js").exec();
 });
 
