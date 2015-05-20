@@ -8,8 +8,6 @@ fs = require 'fs-plus'
 yargs = require 'yargs'
 
 start = ->
-  # enable es6
-  app.commandLine.appendSwitch 'js-flags', '--harmony'
   args = parseCommandLine()
 
   app.on 'will-finish-launching', ->
