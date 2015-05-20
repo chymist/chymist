@@ -18,7 +18,10 @@ gulp.task('octicons', ['bower'], function () {
 gulp.task('copy-bower-components', ['octicons']);
 
 gulp.task('coffee', function () {
-  return gulp.src('./coffee/**/*.coffee')
+  return gulp.src([
+    './coffee/**/*.coffee',
+    './static/**/*.coffee'
+    ]).coffee()
     .pipe(gulp.dest('./app/'));
 });
 
