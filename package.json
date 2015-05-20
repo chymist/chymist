@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "coffee-script": "^1.9.2",
-    "cytoscape": "^2.4.0"
+    "cytoscape": "^2.4.0",
+    "fs-plus": "^2.8.1"
   }
 }
