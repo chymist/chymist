@@ -29,8 +29,8 @@ module.exports = class AtomWindow
     if process.platform is 'linux'
       options.icon = @constructor.iconPath
 
-    @browserWindow = new browserWindow options
-    global.chymistApplication.addWindow this
+    @browserWindow = new BrowserWindow options
+    global.chymistApplication.addWindow(this)
 
     @handleEvents()
 
