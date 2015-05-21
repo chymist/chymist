@@ -27,7 +27,7 @@ module.exports = class AtomWindow
     # Don't set icon on Windows or Mac since, respectively, the exe's ico will
     # be used, or the icon in the .app specified by the plists will be used.
     if process.platform is 'linux'
-      options.icon = @constructor.iconPath @constructor.iconPath
+      options.icon = @constructor.iconPath
 
     @browserWindow = new browserWindow options
     global.chymistApplication.addWindow this
