@@ -7,6 +7,8 @@ path = require 'path'
 fs = require 'fs-plus'
 yargs = require 'yargs'
 
+debug = require('debug')('main.coffee')
+
 start = ->
   args = parseCommandLine()
 
