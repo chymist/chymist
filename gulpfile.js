@@ -30,7 +30,12 @@ gulp.task('coffee', function () {
 gulp.task('static', function () {
   return gulp.src('./static/**/*')
     .pipe(gulp.dest('./app/static'));
-})
+});
+
+gulp.task('resources', function () {
+  return gulp.src('./resources/**/*')
+    .pipe(gulp.dest('./app/resources'));
+});
 
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
@@ -38,7 +43,8 @@ gulp.task('scss', function () {
     .pipe(gulp.dest('./app/static'));
 });
 
-gulp.task('build', ['bower', 'copy-bower-components', 'coffee', 'static', 'scss']);
+gulp.task('build', ['bower', 'copy-bower-components', 'coffee', 'static',
+  'resources', 'scss']);
 
 gulp.task('run', ['build'], function () {
   return run("node_modules/.bin/electron app/main.js").exec();
