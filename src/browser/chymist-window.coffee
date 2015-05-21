@@ -5,6 +5,7 @@ fs = require 'fs'
 url = require 'url'
 _ = require 'underscore-plus'
 {EventEmitter} = require 'events'
+debug = require('debug')('chymist-window.coffee')
 
 module.exports = class AtomWindow
   _.extend @prototype, EventEmitter.prototype
@@ -13,16 +14,21 @@ module.exports = class AtomWindow
 
   browserWindow: null
   loaded: null
+  name: null
 
   constructor: (settings={}) ->
     {@devMode} = settings
 
+    debug('constructing window')
+
     options =
-      show: false
+      show: true
       title: 'Chymist'
       'web-preferences':
         'direct-write': true
         'subpixel-font-scaling': false
+
+    @name = options.title
 
     # Don't set icon on Windows or Mac since, respectively, the exe's ico will
     # be used, or the icon in the .app specified by the plists will be used.
@@ -37,4 +43,45 @@ module.exports = class AtomWindow
     @browserWindow.once 'window:loaded', =>
       @emit 'window:loaded'
       @loaded = true
-      console.log('window loaded!')
+      debug('window loaded!')
+
+  handleEvents: ->
+    @browserWindow.on 'closed', =>
+      global.chymistApplication.removeWindow(this)
+
+    @browserWindow.on 'unresponsive', =>
+      dialog = require 'dialog'
+      chosen = dialog.showMessageBox @browserWindow,
+        type: 'warning'
+        buttons: ['Close', 'Keep Waiting']
+        message: 'Application not responding'
+        detail: 'The application is not responding. Would you like to force close it or keep waiting?'
+      @browserWindow.destroy() if chosen is 0
+
+    @browserWindow.on 'crashed', =>
+      # stub
+
+  getDimensions: ->
+    [x, y] = @browserWindow.getPosition()
+    [width, height] = @browserWindow.getSize()
+    {x, y, width, height}
+
+  close: -> @browserWindow.close()
+
+  focus: -> @browserWindow.focus()
+
+  minimize: -> @browserWindow.minimize()
+
+  maximize: -> @browserWindow.maximize()
+
+  restore: -> @browserWindow.restore()
+
+  isFocused: -> @browserWindow.isFocused()
+
+  isMinimized: -> @browserWindow.isMinimized()
+
+  isWebViewFocused: -> @browserWindow.isWebViewFocused()
+
+  reload: -> @browserWindow.restart()
+
+  toggleDevTools: -> @browserWindow.toggleDevTools()

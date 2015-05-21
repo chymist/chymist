@@ -52,9 +52,10 @@ module.exports = class ChymistApplication
     mainWindow = new ChymistWindow(options)
 
   removeWindow: (window) ->
+    debug("removing window '#{window.name}'")
     @windows.splice @windows.indexOf(window), 1
     if @windows.length is 0
-      @applicationMenu?.enableWindowSpecificItems(false)
+      #@applicationMenu?.enableWindowSpecificItems(false)
       # only delete the menubar and quit on win32 and linux because of mac osx's
       # odd menubar behavior paradigm.
       if process.platform in ['win32', 'linux']
@@ -62,6 +63,7 @@ module.exports = class ChymistApplication
         return
 
   addWindow: (window) ->
+    debug("adding window '#{window.name}'")
     @windows.push window
     @applicationMenu?.addWindow(window.browserWindow)
     focusHandler = => @lastFocusedWindow = window
@@ -84,6 +86,3 @@ module.exports = class ChymistApplication
 
     app.on 'before-quit', =>
       @quitting = true
-
-    app.on 'will-quit', =>
-      #@killAllProcesses()
