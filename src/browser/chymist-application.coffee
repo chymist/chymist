@@ -49,6 +49,8 @@ module.exports = class ChymistApplication
     @setupJavaScriptArguments()
     @handleEvents()
 
+    mainWindow = new ChymistWindow(options)
+
   removeWindow: (window) ->
     @windows.splice @windows.indexOf(window), 1
     if @windows.length is 0
