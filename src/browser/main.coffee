@@ -10,16 +10,21 @@ yargs = require 'yargs'
 debug = require('debug')('main.coffee')
 
 start = ->
+  debug('entered start')
   args = parseCommandLine()
 
   app.on 'will-finish-launching', ->
     setupCrashReporter()
 
   app.on 'ready', ->
+    debug('app ready')
     cwd = args.executedFrom?.toString() or process.cwd()
 
+    debug('instantiating ChymistApplication')
     ChymistApplication = require './chymist-application'
+    debug('opening ChymistApplication')
     ChymistApplication.open(args)
+    debug('ping, chymist app opened')
     console.log("App load time: #{Date.now() - global.shellStartTime}ms") if args.devMode
 
 parseCommandLine = ->
