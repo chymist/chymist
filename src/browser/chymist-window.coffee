@@ -34,4 +34,7 @@ module.exports = class AtomWindow
 
     @handleEvents()
 
-    loadSettings = _.extend({}, settings)
+    @browserWindow.once 'window:loaded', =>
+      @emit 'window:loaded'
+      @loaded = true
+      console.log('window loaded!')
