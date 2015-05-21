@@ -9,7 +9,7 @@ _ = require 'underscore-plus'
 module.exports = class AtomWindow
   _.extend @prototype, EventEmitter.prototype
 
-  @iconPath: path.resolve(__dirname, '..', '..', 'resources', 'atom.png')
+  @iconPath: path.resolve(__dirname, '..', '..', 'resources', 'chymist.png')
 
   browserWindow: null
   loaded: null
