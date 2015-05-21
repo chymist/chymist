@@ -10,6 +10,7 @@ os = require 'os'
 net = require 'net'
 url = require 'url'
 {EventEmitter} = require 'events'
+debug = require('debug')('chymist-application.coffee')
 _ = require 'underscore-plus'
 
 # The application's singleton class
@@ -22,8 +23,11 @@ module.exports = class ChymistApplication
 
   # A public method, the entry point into the application
   @open: (options) ->
+    debug('@open called')
     createChymistApp = -> new ChymistApplication(options)
+    debug('creating chymist app')
     createChymistApp()
+    debug('@open done')
     return
 
   applicationMenu: null
@@ -40,6 +44,7 @@ module.exports = class ChymistApplication
 
     @windows = []
 
+    debug('creating app menu')
     @applicationMenu = new ApplicationMenu(@version)
     @setupJavaScriptArguments()
     @handleEvents()
@@ -68,6 +73,7 @@ module.exports = class ChymistApplication
 
   # Configures required javascript environment flags.
   setupJavaScriptArguments: ->
+    debug('setup javascript args')
     app.commandLine.appendSwitch 'js-flags', '--harmony'
 
   handleEvents: ->
