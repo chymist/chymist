@@ -53,4 +53,7 @@ parseCommandLine = ->
 
   {devMode} # return the options in an easy-to-use hash
 
+setupCrashReporter = ->
+  crashReporter.start(productName: 'Chymist', companyName: 'Chymist')
+
 start() # call the start function
