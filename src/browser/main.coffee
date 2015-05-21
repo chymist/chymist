@@ -1,4 +1,4 @@
-global.shellStartTime = Date.now # record when this js starts executing
+global.shellStartTime = Date.now() # record when this js starts executing
 
 crashReporter = require 'crash-reporter'
 app = require 'app'
