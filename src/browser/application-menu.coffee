@@ -10,3 +10,6 @@ _ = require 'underscore-plus'
 module.exports = class ApplicationMenu
   constructor: (@version) ->
     # stub
+
+  addWindow: (window) ->
+    # stub
