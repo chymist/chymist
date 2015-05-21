@@ -69,3 +69,13 @@ module.exports = class ChymistApplication
   # Configures required javascript environment flags.
   setupJavaScriptArguments: ->
     app.commandLine.appendSwitch 'js-flags', '--harmony'
+
+  handleEvents: ->
+    getLoadSettings = =>
+      devMode: @focusedWindow()?.devMode
+
+    app.on 'before-quit', =>
+      @quitting = true
+
+    app.on 'will-quit', =>
+      #@killAllProcesses()
