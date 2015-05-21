@@ -12,7 +12,7 @@ debug = require('debug')('main.coffee')
 start = ->
   debug('entered start')
   args = parseCommandLine()
-
+  debug('parsed command line')
   app.on 'will-finish-launching', ->
     setupCrashReporter()
 
@@ -20,7 +20,7 @@ start = ->
     debug('app ready')
     cwd = args.executedFrom?.toString() or process.cwd()
 
-    debug('instantiating ChymistApplication')
+    debug('requiring ChymistApplication')
     ChymistApplication = require './chymist-application'
     debug('opening ChymistApplication')
     ChymistApplication.open(args)
