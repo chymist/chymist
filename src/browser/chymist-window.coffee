@@ -19,7 +19,7 @@ class ChymistWindow
 
   constructor: (options) ->
     @loadSettings =
-      bootstrapScript: require.resolve '../renderer/main'
+      bootstrapScript: require.resolve '../renderer/bootstrap'
 
     @loadSettings = _.extend(@loadSettings, options)
 
@@ -55,7 +55,7 @@ class ChymistWindow
       pathname: bootstrapMarkup
       slashes: true
       query: {loadSettings: JSON.stringify(@loadSettings)}
-    
+
     @window.loadUrl targetURL
     @window.show()
 
