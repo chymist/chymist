@@ -17,6 +17,8 @@ start = ->
   if args.devMode
     app.commandLine.appendSwitch 'remote-debugging-port', '8315'
 
+  args.title = 'Chymist'
+
   # don't do anything with Electron until after 'ready', because bad things happen if you don't
   app.on 'ready', ->
     ChymistApplication = require './chymist-application'
