@@ -11,6 +11,8 @@ url = require 'url'
 BrowserWindow = require 'browser-window'
 _ = require 'underscore-plus'
 
+debug = require('debug')('chymist-window')
+
 module.exports =
 class ChymistWindow
   _.extend @prototype, EventEmitter.prototype
@@ -53,7 +55,7 @@ class ChymistWindow
       pathname: bootstrapMarkup
       slashes: true
       query: {loadSettings: JSON.stringify(@loadSettings)}
-
+    
     @window.loadUrl targetURL
     @window.show()
 

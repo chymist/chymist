@@ -6,6 +6,8 @@ fs = require 'fs-plus'
 BrowserWindow = require 'browser-window'
 ChymistApplication = require './chymist-application'
 
+debug = require('debug')('main')
+
 global.shellStartTime = Date.now() # log start time so we can compute how long startup took
 
 start = ->

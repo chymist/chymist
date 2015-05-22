@@ -7,6 +7,8 @@ season = require 'season'
 _ = require 'underscore-plus'
 {EventEmitter} = require 'events'
 
+debug = require('debug')('chymist-menu')
+
 module.exports =
 class ApplicationMenu
   _.extend @prototype, EventEmitter.prototype
