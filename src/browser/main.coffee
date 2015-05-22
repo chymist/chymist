@@ -4,9 +4,24 @@ path = require 'path'
 fs = require 'fs-plus'
 
 BrowserWindow = require 'browser-window'
-ChymistApplication = require 'chymist-application'
+ChymistApplication = require './chymist-application'
 
 global.shellStartTime = Date.now() # log start time so we can compute how long startup took
+
+start = ->
+  # enable es6
+  app.commandLine.appendSwitch 'js-flags', '--harmony'
+
+  args = parseCommandLine()
+
+  if args.devMode
+    app.commandLine.appendSwitch 'remote-debugging-port', '8315'
+
+  # don't do anything with Electron until after 'ready', because bad things happen if you don't
+  app.on 'ready', ->
+    ChymistApplication = require './chymist-application'
+    global.application = new ChymistApplication(args)
+    console.log("App load time: #{Date.now() - global.shellStartTime}ms") if args.devMode
 
 parseCommandLine = ->
   version = app.getVersion()
@@ -28,20 +43,5 @@ parseCommandLine = ->
   devMode = args['dev']
 
   {devMode}
-
-start = ->
-  # enable es6
-  app.commandLine.appendSwitch 'js-flags', '--harmony'
-
-  args = parseCommandLine()
-
-  if (args.devMode)
-    app.commandLine.appendSwitch 'remote-debugging-port', '8315'
-
-  # don't do anything with Electron until after 'ready', because bad things happen if you don't
-  app.on 'ready' ->
-    ChymistApplication = require './application'
-    global.application = new ChymistApplication(args)
-    console.log("App load time: #{Date.now() - global.shellStartTime}ms") if args.devMode
 
 start()
