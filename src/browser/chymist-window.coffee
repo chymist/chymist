@@ -18,8 +18,10 @@ class ChymistWindow
   _.extend @prototype, EventEmitter.prototype
 
   constructor: (options) ->
+    @iconPath = path.resolve(__dirname, '..', '..', 'resources', 'chymist.png')
+
     @loadSettings =
-      bootstrapScript: require.resolve '../renderer/main'
+      bootstrapScript: require.resolve '../bootstrap'
 
     @loadSettings = _.extend(@loadSettings, options)
 
@@ -28,14 +30,20 @@ class ChymistWindow
       height: 600
       title: options.title ? 'Please set options.title!'
       'web-preferences':
-          'subpixel-font-scaling': true
-          'direct-write': true
+        'experimental-features': true
+        'experimental-canvas-features': true
+        'subpixel-font-scaling': true
+        'direct-write': true
+
+    windowOpts.icon = @iconPath if process.platform is 'linux'
 
     windowOpts = _.extend(windowOpts, @loadSettings)
 
     @window = new BrowserWindow(windowOpts)
 
     @handleEvents()
+
+    @window.openDevTools(detach: true) if options.devMode
 
   handleEvents: ->
     @window.on 'closed', (e) =>
@@ -55,7 +63,7 @@ class ChymistWindow
       pathname: bootstrapMarkup
       slashes: true
       query: {loadSettings: JSON.stringify(@loadSettings)}
-    
+
     @window.loadUrl targetURL
     @window.show()
 
