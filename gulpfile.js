@@ -46,8 +46,4 @@ gulp.task('scss', function () {
 gulp.task('build', ['bower', 'copy-bower-components', 'coffee', 'static',
   'resources', 'scss']);
 
-gulp.task('run', ['build'], function () {
-  return run("node_modules/.bin/electron app/main.js").exec();
-})
-
 gulp.task('default', ['run']);
