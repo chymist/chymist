@@ -13,7 +13,7 @@ gulp.task('bower', function () {
 
 gulp.task('octicons', ['bower'], function () {
   return gulp.src('./bower_components/octicons/octicons/*.{css,woff}')
-    .pipe(gulp.dest('./app/static'));
+    .pipe(gulp.dest('./app/styles'));
 });
 
 gulp.task('copy-bower-components', ['octicons']);
@@ -40,7 +40,7 @@ gulp.task('resources', function () {
 gulp.task('scss', function () {
   return gulp.src('./styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./app/static'));
+    .pipe(gulp.dest('./app/styles'));
 });
 
 gulp.task('build', ['bower', 'copy-bower-components', 'coffee', 'static',
