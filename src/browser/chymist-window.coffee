@@ -43,6 +43,8 @@ class ChymistWindow
 
     @handleEvents()
 
+    @window.openDevTools(detach: true) if options.devMode
+
   handleEvents: ->
     @window.on 'closed', (e) =>
       this.emit 'closed', e
