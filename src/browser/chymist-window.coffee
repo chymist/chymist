@@ -21,7 +21,7 @@ class ChymistWindow
     @iconPath = path.resolve(__dirname, '..', '..', 'resources', 'chymist.png')
 
     @loadSettings =
-      bootstrapScript: require.resolve '../renderer/bootstrap'
+      bootstrapScript: require.resolve '../bootstrap'
 
     @loadSettings = _.extend(@loadSettings, options)
 
