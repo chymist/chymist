@@ -28,8 +28,10 @@ class ChymistWindow
       height: 600
       title: options.title ? 'Please set options.title!'
       'web-preferences':
-          'subpixel-font-scaling': true
-          'direct-write': true
+        'experimental-features': true
+        'experimental-canvas-features': true
+        'subpixel-font-scaling': true
+        'direct-write': true
 
     windowOpts = _.extend(windowOpts, @loadSettings)
 
