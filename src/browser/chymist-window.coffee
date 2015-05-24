@@ -18,6 +18,8 @@ class ChymistWindow
   _.extend @prototype, EventEmitter.prototype
 
   constructor: (options) ->
+    @iconPath = path.resolve(__dirname, '..', '..', 'resources', 'chymist.png')
+
     @loadSettings =
       bootstrapScript: require.resolve '../renderer/bootstrap'
 
@@ -32,6 +34,8 @@ class ChymistWindow
         'experimental-canvas-features': true
         'subpixel-font-scaling': true
         'direct-write': true
+
+    windowOpts.icon = @iconPath if process.platform is 'linux'
 
     windowOpts = _.extend(windowOpts, @loadSettings)
 
