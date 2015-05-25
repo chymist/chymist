@@ -10,6 +10,11 @@ When investigating the prior art of literature on a subject, and trying to hold 
 systems that you have read about in your head, you're bound to lose some connections.
 Chymist is software for *serializing*, or "writing down", these connections and ideas.
 
+## Installation
+Grab it with `git`, or visit the releases page.
+`npm install`, then `gulp build`, and `run.sh`.
+Sorry, no packages yet :(
+  
 ## License
 This software is licensed under the terms of the GNU GPLv3, and
 is copyright 2015 Liam Marshall and contributors.
