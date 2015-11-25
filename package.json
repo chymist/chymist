@@ -1,9 +1,14 @@
 {
   "name": "chymist",
+  "productName": "Chymist",
   "version": "1.0.0",
+  "appBundleId": "io.github.chymist",
   "description": "synthesizing ideas.",
-  "main": "index.js",
-  "scripts": {},
+  "main": "src/browser/main.js",
+  "scripts": {
+    "start": "DEBUG=*,-babel* electron . --debug",
+    "lint": "eslint . --ext .js,.jsx"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/proteins/chymist.git"
@@ -16,5 +21,16 @@
   ],
   "author": "Liam Marshall (liam@cpan.org)",
   "license": "GPL-3.0",
-  "homepage": "https://bitbucket.org/proteins/chymist#readme"
+  "homepage": "https://bitbucket.org/proteins/chymist#readme",
+  "devDependencies": {
+    "electron-compilers": "^1.0.1",
+    "electron-packager": "^5.1.1",
+    "electron-prebuilt": "^0.35.1",
+    "rimraf": "^2.4.4"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "electron-compile": "^1.0.1",
+    "minimist": "^1.2.0"
+  }
 }
