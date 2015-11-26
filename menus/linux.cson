@@ -1,0 +1,8 @@
+'menu': [
+  {
+    label: '&Development'
+    submenu: [
+      {label: 'Toggle &Devtools', command: 'application:toggle-devtools', accelerator: 'Shift+Ctrl+d'}
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 import {EventEmitter} from 'events';
 import AppWindow from './AppWindow';
+import AppMenu from './AppMenu';
 import path from 'path';
 const debug = require('debug')('browser:Application');
 
@@ -34,6 +35,8 @@ export default class Application extends EventEmitter {
       width: 1024,
       height: 700,
     });
+    this.menu = new AppMenu({pkg: this.pkgJson});
+    this.menu.attachToWindow(appWindow);
     return appWindow;
   }
 
