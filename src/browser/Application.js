@@ -16,6 +16,7 @@ export default class Application extends EventEmitter {
    * Opens up a new application window
    */
   open() {
+    debug('opening new application window');
     const newWindow = this.createNewWindow(this.options);
     this.addWindow(newWindow);
     newWindow.show();
@@ -46,6 +47,7 @@ export default class Application extends EventEmitter {
    * @param {AppWindow} appWindow The window to add to the array
    */
   addWindow(appWindow) {
+    debug(`adding window named "${appWindow.loadSettings.title}" to app`);
     this.windows.push(appWindow);
   }
 
@@ -55,6 +57,7 @@ export default class Application extends EventEmitter {
    * @param {AppWindow} appWindow The window to remove
    */
   removeWindow(appWindow) {
+    debug(`removing window named "${appWindow.loadSettings.title}" from app`);
     this.windows.forEach((win, index) => {
       if (win === appWindow) {
         this.windows.splice(index, 1);

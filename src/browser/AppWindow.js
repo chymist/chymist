@@ -19,7 +19,6 @@ export default class AppWindow extends EventEmitter {
       },
     };
     _.extend(windowOpts, this.loadSettings);
-    debug(windowOpts);
     this.window = new BrowserWindow(windowOpts);
   }
 
