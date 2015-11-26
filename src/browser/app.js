@@ -17,9 +17,11 @@ process.on('uncaughtException', function printUncaughtException(error) {
   }
 });
 
+debug('Beginning app load.');
+
 import Application from './Application';
 
 const application = new Application(argv);
 application.open();
 
-debug('App load time: ' + (Date.now() - shellStartTime));
+debug(`App load time: ${Date.now() - shellStartTime} ms`);
