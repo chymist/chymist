@@ -4,17 +4,8 @@ const shellStartTime = Date.now();
 
 // make errors print to terminal
 process.on('uncaughtException', function printUncaughtException(error) {
-  if (error === null) {
-    const error = {};
-  }
-
-  if (error.message !== null) {
-    console.error(error.message);
-  }
-
-  if (error.stack !== null) {
-    console.error(error.stack);
-  }
+  console.error(error.message);
+  console.error(error.stack);
 });
 
 debug('Beginning app load.');
