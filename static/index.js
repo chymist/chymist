@@ -6,7 +6,7 @@ window.onload = function() {
   try {
     require('vm-compatibility-layer');
     require(loadSettings.bootstrapScript); // load render script
-    require('ipcRenderer').send('window-command', 'window:loaded');
+    require('electron').ipcRenderer.send('window-command', 'window:loaded');
   } catch (error) {
     console.error(error);
     if (loadSettings.debug) {
