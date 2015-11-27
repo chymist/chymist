@@ -1,18 +1,21 @@
-/* eslint no-var:0 */
-var app = require('app');
-var path = require('path');
-var fs = require('fs');
+import Application from './Application';
+import app from 'app';
+const argv = require('minimist')(process.argv.slice(2));
+const debug = require('debug')('browser:app');
 
-var argv = require('minimist')(process.argv.slice(2));
-var devMode = argv.debug || argv.d;
+app.on('ready', () => {
+  const shellStartTime = Date.now();
 
-var cachePath = path.join(__dirname, '..', '..', 'cache');
+  // make errors print to terminal
+  process.on('uncaughtException', function printUncaughtException(error) {
+    console.error(error.message);
+    console.error(error.stack);
+  });
 
-app.on('ready', function appReady() {
-  if (fs.statSyncNoException(cachePath) && !devMode) {
-    require('electron-compile').initForProduction(cachePath);
-  } else {
-    require('electron-compile').init();
-  }
-  require('./app');
+  debug('Beginning app load.');
+
+  const application = new Application(argv);
+  application.open();
+
+  debug(`App load time: ${Date.now() - shellStartTime} ms`);
 });
