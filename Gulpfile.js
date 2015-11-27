@@ -1,7 +1,7 @@
 /* eslint no-var:0 */
 var gulp = require('gulp');
 var babel = require('gulp-babel');
-var less = require('gulp-less');
+var sass = require('gulp-sass');
 
 gulp.task('js', function() {
   return gulp.src('src/**/*.@(js|jsx)')
@@ -14,9 +14,9 @@ gulp.task('static', function() {
     .pipe(gulp.dest('build/static'));
 });
 
-gulp.task('static-less', function() {
-  return gulp.src('static/styles/**/*.less')
-    .pipe(less({paths: ['static/styles']}))
+gulp.task('scss', function() {
+  return gulp.src('static/styles/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('build/static/styles'));
 });
 
@@ -25,4 +25,4 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('default', ['js', 'static', 'static-less', 'copy']);
+gulp.task('default', ['js', 'scss', 'static', 'copy']);
