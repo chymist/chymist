@@ -37,6 +37,9 @@ export default class Application extends EventEmitter {
       height: 700,
     });
     this.menu = new AppMenu({pkg: this.pkgJson});
+    this.menu.on('application:toggle-devtools', () => {
+      appWindow.window.openDevTools();
+    });
     this.menu.attachToWindow(appWindow);
     return appWindow;
   }
