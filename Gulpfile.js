@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var sass = require('gulp-sass');
+var bower = require('gulp-bower');
 
 gulp.task('js', function() {
   return gulp.src('src/**/*.@(js|jsx)')
@@ -25,4 +26,9 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('default', ['js', 'scss', 'static', 'copy']);
+gulp.task('bower', function() {
+  return bower()
+    .pipe(gulp.dest('build/vendor'));
+});
+
+gulp.task('default', ['js', 'scss', 'bower', 'static', 'copy']);
