@@ -26,7 +26,5 @@
     "tests"
   ],
   "dependencies": {
-    "d3": "~3.5.10",
-    "webcola": "~3.1.0"
   }
 }
