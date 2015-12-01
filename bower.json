@@ -1,20 +1,23 @@
 {
   "name": "chymist",
-  "version": "1.0.0",
+  "description": "synthesizing ideas.",
+  "main": "src/browser/main.js",
   "authors": [
     "Liam Marshall <liam@cpan.org>"
   ],
-  "description": "synthesizing ideas.",
-  "moduleType": [
-    "node"
-  ],
+  "license": "GPL-3.0",
   "keywords": [
     "biology",
     "cytoscape",
     "brain-map",
     "graph"
   ],
-  "license": "GPLv3",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "homepage": "",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -23,6 +26,5 @@
     "tests"
   ],
   "dependencies": {
-    "octicons": "~2.2.2"
   }
 }

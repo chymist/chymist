@@ -1,28 +1,19 @@
-window.onload = function () {
+/* eslint no-var:0, vars-on-top:0, func-names:0 */
+window.onload = function() {
+  // Skip over "?loadSettings="
+  var loadSettings = JSON.parse(decodeURIComponent(window.location.search.substr(14)));
+  window.loadSettings = loadSettings;
   try {
-    var startTime = Date.now();
-    // parse url-encoded loadSettings. skip first 14 chars, they're just `?loadSettings=`.
-    var loadSettings = JSON.parse(decodeURIComponent(location.search.substr(14)))
-
-    if (loadSettings.devMode) {
-      require('coffee-script').register();
+    require('vm-compatibility-layer');
+    require(loadSettings.bootstrapScript); // load render script
+    require('electron').ipcRenderer.send('window-command', 'window:loaded');
+  } catch (error) {
+    console.error(error);
+    if (loadSettings.debug) {
+      var currentWindow = require('remote').getCurrentWindow();
+      currentWindow.center();
+      currentWindow.show();
+      currentWindow.openDevTools();
     }
-
-    if (!loadSettings.devMode) {
-      require('coffee-script').register();
-    }
-
-    window.loadSettings = loadSettings;
-
-    require(loadSettings.bootstrapScript);
-    require('ipc').sendChannel('window-command', 'window:loaded');
-  } catch (e) {
-    var currentWindow = require('remote').getCurrentWindow();
-    currentWindow.setSize(800, 600);
-    currentWindow.center();
-    currentWindow.show();
-    currentWindow.openDevTools();
-
-    console.error(e.stack || e);
   }
 };
