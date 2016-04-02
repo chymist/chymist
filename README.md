@@ -14,7 +14,12 @@ Chymist is software for *serializing*, or "writing down", these connections and 
 Grab it with `git`, or visit the releases page.
 `npm install`, then `gulp build`, and `run.sh`.
 Sorry, no packages yet :(
-  
+
+## Contributing
+See CONTRIBUTING.md.
+Also, we have a code of conduct in case this is ever a bigish project with more than 1 contributor.
+It's over in CODE_OF_CONDUCT.md
+
 ## License
 This software is licensed under the terms of the GNU GPLv3, and
 is copyright 2015 Liam Marshall and contributors.
