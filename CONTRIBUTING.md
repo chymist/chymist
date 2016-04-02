@@ -16,34 +16,31 @@ propose changes to this document in a pull request.
 * Include screenshots and animated GIFs whenever possible; they are immensely
   helpful.
 * Include the behavior you expected and other places you've seen that behavior
-  such as Emacs, vi, Xcode, etc.
-* Check the dev tools (`alt-cmd-i`) for errors to include. If the dev tools
+  such as Emacs, vi, google {docs,sheets}, etc.
+* Check the dev tools (`ctrl-shift-d`) for errors to include. If the dev tools
   are open _before_ the error is triggered, a full stack trace for the error
   will be logged. If you can reproduce the error, use this approach to get the
   full stack trace and include it in the issue.
 * On Mac, check Console.app for stack traces to include if reporting a crash.
 * Perform a [cursory search](https://github.com/issues?q=+is%3Aissue+user%3Achymist)
   to see if a similar issue has already been submitted.
-* Please setup a [profile picture](https://help.github.com/articles/how-do-i-set-up-my-profile-picture)
-  to make yourself recognizable and so we can all get to know each other better.
 
 ## Pull Requests
 
 * Include screenshots and animated GIFs in your pull request whenever possible.
-* Follow the [CoffeeScript](#coffeescript-styleguide),
-  [JavaScript](https://github.com/styleguide/javascript),
+* Follow the [JavaScript](https://github.com/airbnb/javascript),
   and [CSS](https://github.com/styleguide/css) styleguides.
-* Include thoughtfully-worded, well-structured
-  [Jasmine](http://jasmine.github.io/) specs in the `./spec` folder. Run them using `apm test`. See the [Specs Styleguide](#specs-styleguide) below.
-* Document new code based on the
-  [Documentation Styleguide](#documentation-styleguide)
+* Include thoughtfully-worded, well-structured [Mocha](https://mochajs.org/) tests in the `./tests` folder.
+  We use [should.js](https://github.com/shouldjs/should.js) for assertions.
+  Run them using `npm test`. See the [Test Styleguide](#test-styleguide) below.
+* Document new code based on the [Documentation Styleguide](#documentation-styleguide).
 * End files with a newline.
 * Place requires in the following order:
     * Built in Node Modules (such as `path`)
     * Built in Chymist and Electron Modules
     * Local Modules (using relative paths)
 * Place class properties in the following order:
-    * Class methods and properties (methods starting with a `@`)
+    * Class methods and properties
     * Instance methods and properties
 * Avoid platform-dependent code:
     * Use `require('fs-plus').getHomeDirectory()` to get the home directory.
@@ -76,41 +73,10 @@ propose changes to this document in a pull request.
     * :arrow_down: `:arrow_down:` when downgrading dependencies
     * :shirt: `:shirt:` when removing linter warnings
 
-## CoffeeScript Styleguide
-
-* Set parameter defaults without spaces around the equal sign
-    * `clear = (count=1) ->` instead of `clear = (count = 1) ->`
-* Use parentheses if it improves code clarity.
-* Prefer alphabetic keywords to symbolic keywords:
-    * `a is b` instead of `a == b`
-* Avoid spaces inside the curly-braces of hash literals:
-    * `{a: 1, b: 2}` instead of `{ a: 1, b: 2 }`
-* Include a single line of whitespace between methods.
-* Capitalize initialisms and acronyms in names, except for the first word, which
-  should be lower-case:
-  * `getURI` instead of `getUri`
-  * `uriToOpen` instead of `URIToOpen`
-* Use `slice()` to copy an array
-* Add an explicit `return` when your function ends with a `for`/`while` loop and
-  you don't want it to return a collected array.
-
 ## Specs Styleguide
 
-- Include thoughtfully-worded, well-structured
-  [Jasmine](http://jasmine.github.io/) specs in the `./spec` folder.
-- treat `describe` as a noun or situation.
-- treat `it` as a statement about state or how an operation changes state.
-
-### Example
-
-```coffee
-describe 'a dog', ->
- it 'barks', ->
- # spec here
- describe 'when the dog is happy', ->
-  it 'wags its tail', ->
-  # spec here
-```
+- Include thoughtfully-worded, well-structured [Mocha](https://mochajs.org/) tests in the `./tests` folder.
+- Use [should.js](https://github.com/shouldjs/should.js) for assertions.
 
 ## Documentation Styleguide
 
@@ -123,15 +89,14 @@ describe 'a dog', ->
 
 ### Example
 
-```coffee
-# Public: Disable the package with the given name.
-#
-# * `name`    The {String} name of the package to disable.
-# * `options` (optional) The {Object} with disable options (default: {}):
-#   * `trackTime`     A {Boolean}, `true` to track the amount of time taken.
-#   * `ignoreErrors`  A {Boolean}, `true` to catch and ignore errors thrown.
-# * `callback` The {Function} to call after the package has been disabled.
-#
-# Returns `undefined`.
-disablePackage: (name, options, callback) ->
+```js
+/* Public: Disable the package with the given name.
+   * `name`    The {String} name of the package to disable.
+   * `options` (optional) The {Object} with disable options (default: {}):
+     * `trackTime`     A {Boolean}, `true` to track the amount of time taken.
+     * `ignoreErrors`  A {Boolean}, `true` to catch and ignore errors thrown.
+   * `callback` The {Function} to call after the package has been disabled.
+
+   Returns `undefined`. */
+function disablePackage(name, options, callback) {
 ```
